@@ -24,6 +24,7 @@ def getUserName():
     while True:
         userInput = input("Enter a name for your character?\n: ")
         userInput = userInput.upper().strip()
+        print(f"Nice to meet you, {userInput}.")
         if userInput in space:
             print("Cannot just use a blank name.")
             continue

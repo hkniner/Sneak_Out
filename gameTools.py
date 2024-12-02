@@ -2,7 +2,7 @@ import random
 from inputProcess import *
 
 def setColor(color, string):
-    valid_Colors = ["red", "green", "yellow", "blue", "none"]
+    valid_Colors = ["red", "green", "yellow", "blue", "purple", "none"]
 
     try:
         if color.lower().strip() in valid_Colors:
@@ -12,6 +12,7 @@ def setColor(color, string):
             GREEN = ESC + "32m"
             YELLOW = ESC + "33m"
             BLUE = ESC + "34m"
+            PURPLE = ESC + "35m"
             RESET = ESC + "0;0m" 
 
             if color.lower().strip() == "RED".lower().strip():
@@ -24,6 +25,8 @@ def setColor(color, string):
                 color = BLUE
             if color.lower().strip() == "NONE".lower().strip():
                 color = RESET
+            if color.lower().strip() == "PURPLE".lower().strip():
+                color = PURPLE
 
             clrString = color + string + RESET
 
@@ -41,7 +44,7 @@ def getColor():
 
     #Getting color input with a True loop
     while True:
-        color = input("What color would you like to be?\n(Choices: red, green, blue, yellow, none)\n: ")
+        color = input("What is your favorite color?\n(Choices: red, green, blue, yellow, none)\n: ")
         if color in valid_Colors:
             ESC = "\033["
             RED = ESC + "31m"

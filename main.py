@@ -18,4 +18,22 @@ world["board"] = createBoard(7)
 world["playerLoc"] = loc
 world["player"] = createPlayer()
 
+#creating pois and locations
+world["POI"] = {}
+world["POI"]["Front Door"] = {
+    "x":3,
+    "y":0
+}
+world["POI"]["Parents Room"] = {
+    "x":6,
+    "y":3
+}
+world["POI"]["Your Room"] = {
+    "x":3,
+    "y":6
+}
+world["POI"]["Kitchen"] = {
+    "x":0,
+    "y":3
+}
 printBoard(world)
