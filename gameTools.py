@@ -1,6 +1,70 @@
 import random
 from inputProcess import *
 
+def setColor(color, string):
+    valid_Colors = ["red", "green", "yellow", "blue", "none"]
+
+    try:
+        if color.lower().strip() in valid_Colors:
+        
+            ESC = "\033["
+            RED = ESC + "31m"
+            GREEN = ESC + "32m"
+            YELLOW = ESC + "33m"
+            BLUE = ESC + "34m"
+            RESET = ESC + "0;0m" 
+
+            if color.lower().strip() == "RED".lower().strip():
+                color = RED
+            if color.lower().strip() == "GREEN".lower().strip():
+                color = GREEN
+            if color.lower().strip() == "YELLOW".lower().strip():
+                color = YELLOW
+            if color.lower().strip() == "BLUE".lower().strip():
+                color = BLUE
+            if color.lower().strip() == "NONE".lower().strip():
+                color = RESET
+
+            clrString = color + string + RESET
+
+            return clrString
+        else:
+            print("Invalid Color.")
+            return string
+    except:
+        print("An Unexpected Error Occured.")
+        return string
+
+def getColor():
+    #List of valid colors
+    valid_Colors = ["red", "green", "yellow", "blue", "none"]
+
+    #Getting color input with a True loop
+    while True:
+        color = input("What color would you like to be?\n(Choices: red, green, blue, yellow, none)\n: ")
+        if color in valid_Colors:
+            ESC = "\033["
+            RED = ESC + "31m"
+            GREEN = ESC + "32m"
+            YELLOW = ESC + "33m"
+            BLUE = ESC + "34m"
+            RESET = ESC + "0;0m" 
+
+            if color.lower().strip() == "RED".lower().strip():
+                colorChoice = "RED"
+            if color.lower().strip() == "GREEN".lower().strip():
+                colorChoice = "GREEN"
+            if color.lower().strip() == "YELLOW".lower().strip():
+                colorChoice = "YELLOW"
+            if color.lower().strip() == "BLUE".lower().strip():
+                colorChoice = "BLUE"
+            if color.lower().strip() == "NONE".lower().strip():
+                colorChoice = "NONE"
+            return colorChoice
+        else:
+            print("Invalid Color.")
+            continue
+    
 def dndDiceRoll(dstr):
     rolls = []
     try:
@@ -26,61 +90,12 @@ def createPlayer():
     player = {
     }
     player["name"] = getUserName()
-    maxhpsum = dndDiceRoll("5d4")
-    player["maxhp"] = sum(maxhpsum)
-    player["hp"] = player["maxhp"]
+    player["color"] = getColor()
+    player["name"] = setColor(player["color"], player["name"])
+    maxhunger = dndDiceRoll("2d4")
+    player["maxHung"] = sum(maxhunger)
+    player["hunger"] = player["maxHung"]
     return player
 
-def setColor(color, string):
-    valid_Colors = ["red", "green", "yellow", "blue"]
-
-    try:
-        if color.lower().strip() in valid_Colors:
-        
-            ESC = "\033["
-            RED = ESC + "31m"
-            GREEN = ESC + "32m"
-            YELLOW = ESC + "33m"
-            BLUE = ESC + "34m"
-            RESET = ESC + "0;0m" 
-
-            if color.lower().strip() == "RED".lower().strip():
-                color = RED
-            if color.lower().strip() == "GREEN".lower().strip():
-                color = GREEN
-            if color.lower().strip() == "YELLOW".lower().strip():
-                color = YELLOW
-            if color.lower().strip() == "BLUE".lower().strip():
-                color = BLUE
-
-            clrString = color + string + RESET
-
-            return clrString
-        else:
-            print("Invalid Color.")
-            return string
-    except:
-        print("An Unexpected Error Occured.")
-        return string
 
 
-
-    
-
-def main():
-    player = createPlayer()
-    print(player)
-    drList1 = dndDiceRoll("10d1")
-    print(drList1)
-    drList2 = dndDiceRoll("20d5")
-    print(drList2)
-    drList3 = dndDiceRoll("5x5")
-    print(drList3)
-    colString = setColor("RED", "Hello World")
-    print(colString)
-    colString2 = setColor("PURPLE", "Testing")
-    print(colString2)
-
-
-
-main()
