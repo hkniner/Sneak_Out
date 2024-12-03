@@ -19,6 +19,7 @@ def main():
     world["board"] = createBoard(7)
     world["playerLoc"] = loc
     world["player"] = createPlayer()
+    world["inMap"] = True
 
     #creating pois and locations
     world["POI"] = {}
@@ -38,12 +39,27 @@ def main():
         "x":0,
         "y":3
     }
-    printBoard(world)
 
-    #Starting gameplay loop
+    #Intro Cutscene
 
+    print(f"As the night's got warmer and the day's became longer {world["player"]["name"]} was lying in their bed...")
+    time.sleep(4)
+    print("With a growing urge that could not be ignored any longer...")
+    time.sleep(4)
+    print("The urge to...")
+    time.sleep(2)
+    print("SNEAK OUT!!!!")
+    time.sleep(2)
+
+    #Gameplay loop
     while True:
-        print("testing")
-        break
+        #Checks to see if in minimap
+        if world["inMap"] == True:
+            #Prints map
+            printBoard(world)
+            #Asks user for command
+            userInput = getUserComm(world)
+            #Processes
+            processUserComm(world, loc, userInput)
 
 main()

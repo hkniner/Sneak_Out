@@ -1,18 +1,32 @@
 '''
-getUserDir:
+getUserComm:
 while True loop that waits for a N E W S to be put into the terminal and returns it
-no parameters
+1 parameter, world
 '''
-def getUserDir():
+def getUserComm(world):
     
     validCommands = ['n', 'e', 'w', 's']
     while True:
-        userInput = input("Enter a direction(n,e,w,s): ")
-        userInput = userInput.lower().strip()
-        if userInput not in validCommands:
-            print("Not a valid command")
-            continue
-        return userInput
+        if world["inMap"] == True:
+            userInput = input("Enter a direction(n,e,w,s): ")
+            userInput = userInput.lower().strip()
+            if userInput not in validCommands:
+                print("Not a valid command")
+                continue
+            return userInput
+    
+def processUserComm(world, loc, userInput):
+    if world["inMap"] == True:
+        if userInput == 'e' and loc["x"] < len(world["board"])-1:
+            loc["x"] += 1
+        if userInput == 's' and loc["y"] < len(world["board"])-1:
+            loc["y"] += 1
+        if userInput == 'w' and loc["x"] > 0:
+            loc["x"] -= 1
+        if userInput == 'n' and loc["y"] > 0:
+            loc["y"] -= 1
+        return loc
+
 '''
 getUserName: 
 asks user to name character
@@ -28,11 +42,11 @@ def getUserName():
         if userInput in space:
             print("Cannot just use a blank name.")
             continue
-        if len(userInput) < 4:
-            print("4 characters or more please.")
+        if len(userInput) < 3:
+            print("3 characters or more please.")
             continue
-        if len(userInput) > 12:
-            print("12 characters or less please.")
+        if len(userInput) > 10:
+            print("10 characters or less please.")
             continue
 
         return userInput
