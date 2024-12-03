@@ -100,5 +100,10 @@ def createPlayer():
     player["hunger"] = player["maxHung"]
     return player
 
+def printHunger(world):
+    starct = world["player"]["hunger"] * "*"
+    output_string = "[Hunger] :" + starct
+    print(output_string)
+
 
 

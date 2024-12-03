@@ -51,15 +51,32 @@ def main():
     print("SNEAK OUT!!!!")
     time.sleep(2)
 
+
     #Gameplay loop
     while True:
         #Checks to see if in minimap
         if world["inMap"] == True:
             #Prints map
             printBoard(world)
+            printHunger(world)
             #Asks user for command
             userInput = getUserComm(world)
-            #Processes
+            #Processes userInput
+            world["player"]["hunger"] -= 1
             processUserComm(world, loc, userInput)
+        if world["inMap"] == False:
+            #Checks which POI player located at and prints dependent on that POI
+            if world["playerLoc"] == world["POI"]["Front Door"]:
+                print("front door")
+                break
+            if world["playerLoc"] == world["POI"]["Parents Room"]:
+                print("parents room")
+                break
+            if world["playerLoc"] == world["POI"]["Your Room"]:
+                print("your room")
+                break
+            if world["playerLoc"] == world["POI"]["Kitchen"]:
+                print("kitchen")
+                break
 
 main()

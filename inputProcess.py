@@ -16,6 +16,7 @@ def getUserComm(world):
             return userInput
     
 def processUserComm(world, loc, userInput):
+    #Checks to see if in minimap
     if world["inMap"] == True:
         if userInput == 'e' and loc["x"] < len(world["board"])-1:
             loc["x"] += 1
@@ -25,7 +26,16 @@ def processUserComm(world, loc, userInput):
             loc["x"] -= 1
         if userInput == 'n' and loc["y"] > 0:
             loc["y"] -= 1
-        return loc
+    #Checks to see if at a POI
+        if world["playerLoc"] == world["POI"]["Front Door"]:
+            world["inMap"] = False
+        if world["playerLoc"] == world["POI"]["Parents Room"]:
+            world["inMap"] = False
+        if world["playerLoc"] == world["POI"]["Your Room"]:
+            world["inMap"] = False
+        if world["playerLoc"] == world["POI"]["Kitchen"]:
+            world["inMap"] = False
+        return world, loc
 
 '''
 getUserName: 
