@@ -1,19 +1,41 @@
+
+
 '''
 getUserComm:
 while True loop that waits for a N E W S to be put into the terminal and returns it
 1 parameter, world
 '''
 def getUserComm(world):
-    
-    validCommands = ['n', 'e', 'w', 's']
-    while True:
-        if world["inMap"] == True:
-            userInput = input("Enter a direction(n,e,w,s): ")
-            userInput = userInput.lower().strip()
-            if userInput not in validCommands:
-                print("Not a valid command")
-                continue
-            return userInput
+    if world["inMap"] == True:
+        validCommands = ['n', 'e', 'w', 's']
+        while True:
+                userInput = input("Enter a direction(n,e,w,s): ")
+                userInput = userInput.lower().strip()
+                if userInput not in validCommands:
+                    print("Not a valid command")
+                    continue
+                return userInput
+    if world["playerLoc"] == world["POI"]["Front Door"]:
+        if world["poiFlags"]["Front Door"]["InKeyGame"]:
+            validCommands = ["right", "left", "leave"]
+            while True:
+                    userInput = input("Which way will you turn the key?(right, left, leave)\n: ")
+                    userInput = userInput.lower().strip()
+                    if userInput not in validCommands:
+                        print("Not a valid command")
+                        continue
+                    return userInput
+        else:
+            validCommands = ["sneakout", "leave"]
+            while True:
+                    userInput = input("A giant door stands in your way...It almost looks menacing\nWhat will you do?(SneakOut, leave)\n: ")
+                    userInput = userInput.strip().lower()
+                    if userInput not in validCommands:
+                        print("Not a valid command")
+                        continue
+                    return userInput
+
+        
     
 def processUserComm(world, loc, userInput):
     #Checks to see if in minimap

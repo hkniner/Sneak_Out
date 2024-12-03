@@ -43,8 +43,10 @@ def main():
     #Creating all POI flags, basically telling what to do and when 
     world["poiFlags"] = {}
     world["poiFlags"]["Front Door"] = {
-        "Key": False,
+        "Key": True,
         "Unlock": False,
+        "Finish": False,
+        "InKeyGame": False
     }
     world["poiFlags"]["Parents Room"] = {
         "Slippers": False,
@@ -74,6 +76,9 @@ def main():
 
     #Gameplay loop
     while True:
+        #Checks to see if game is done
+        if world["poiFlags"]["Front Door"]["Finish"] == True:
+            break
         #Checks to see if in minimap
         if world["inMap"] == True:
             #Prints map
@@ -87,8 +92,8 @@ def main():
         if world["inMap"] == False:
             #Checks which POI player located at and prints dependent on that POI
             if world["playerLoc"] == world["POI"]["Front Door"]:
-                print("front door")
-                break
+                userInput = getUserComm(world)
+                printFrontDoor(world, userInput)
             if world["playerLoc"] == world["POI"]["Parents Room"]:
                 print("parents room")
                 break
