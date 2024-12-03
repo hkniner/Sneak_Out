@@ -7,6 +7,7 @@ Dec 2, 2024
 from boardTools import *
 from gameTools import *
 from inputProcess import *
+from poiProcess import *
 import time
 
 def main():
@@ -39,7 +40,26 @@ def main():
         "x":0,
         "y":3
     }
-
+    #Creating all POI flags, basically telling what to do and when 
+    world["poiFlags"] = {}
+    world["poiFlags"]["Front Door"] = {
+        "Key": False,
+        "Unlock": False,
+    }
+    world["poiFlags"]["Parents Room"] = {
+        "Slippers": False,
+        "Key": False,
+        "Final": False,
+    }
+    world["poiFlags"]["Your Room"] = {
+        "Slippers": False,
+        "Final": False
+    }
+    world["poiFlags"]["Kitchen"] = {
+        "Stove": False,
+        "Final": False,
+    }
+        
     #Intro Cutscene
 
     print(f"As the night's got warmer and the day's became longer {world["player"]["name"]} was lying in their bed...")
