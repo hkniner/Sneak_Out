@@ -98,12 +98,10 @@ def createPlayer():
     maxhunger = dndDiceRoll("6d2")
     player["maxHung"] = sum(maxhunger)
     player["hunger"] = player["maxHung"]
+    player["inv"] = []
     return player
 
 def printHunger(world):
     starct = world["player"]["hunger"] * "*"
     output_string = "[Hunger] :" + starct
     print(output_string)
-
-
-

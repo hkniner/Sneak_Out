@@ -6,6 +6,7 @@ while True loop that waits for a N E W S to be put into the terminal and returns
 1 parameter, world
 '''
 def getUserComm(world):
+    #Mini Map controls
     if world["inMap"] == True:
         validCommands = ['n', 'e', 'w', 's']
         while True:
@@ -15,6 +16,7 @@ def getUserComm(world):
                     print("Not a valid command")
                     continue
                 return userInput
+    #Front Door controls
     if world["playerLoc"] == world["POI"]["Front Door"]:
         if world["poiFlags"]["Front Door"]["InKeyGame"]:
             validCommands = ["right", "left", "leave"]
@@ -34,6 +36,20 @@ def getUserComm(world):
                         print("Not a valid command")
                         continue
                     return userInput
+    if world["playerLoc"] == world["POI"]["Parents Room"]:
+        if world["poiFlags"]["Parents Room"]["Slippers"] == True:
+            validCommands = ["closet", "dresser", "nightstand", "leave"]
+            while True:
+                    userInput = input("Where do you want to go?(closet, dresser, nightstand, leave)\n: ")
+                    userInput = userInput.lower().strip()
+                    if userInput not in validCommands:
+                        print("Not a valid command")
+                        continue
+                    return userInput
+        else:
+            userInput = "leave"
+            return userInput
+             
 
         
     

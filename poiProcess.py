@@ -5,7 +5,7 @@ def printFrontDoor(world, userInput):
     import time
     #Detail text and leaving room
     if userInput.lower().strip() == "leave":
-        print("You leave the menacing door as your want for freedom grows.\n")
+        print("You leave the daunting door as your want for freedom grows.\n")
         world["playerLoc"]["x"] = 3
         world["playerLoc"]["y"] = 1
         world["inMap"] = True
@@ -81,6 +81,22 @@ def printFrontDoor(world, userInput):
             world["poiFlags"]["Front Door"]["Unlock"] = True
             return world
 
+#PARENTS ROOM PRINT
+def printParentsRoom(world, userInput):
+    import time
+    #Detail text and leaving room
+    if userInput.lower().strip() == "leave":
+        if "slippers" not in world["player"]["inv"]:
+            print("You need shoes that will make sure nobody hears a peep.")
+            print("You shut the door as quietly as possible in hopes your parents don't hear the creaks of the door.\n")
+        else:
+            print("You shut the door as quietly as possible in hopes your parents don't hear the creaks of the door.\n")
+        time.sleep(3)
+        world["playerLoc"]["x"] = 5
+        world["playerLoc"]["y"] = 3
+        world["inMap"] = True
+        return world
+    
     
             
         

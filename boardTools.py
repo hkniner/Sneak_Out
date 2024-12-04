@@ -75,5 +75,3 @@ def printBoard(world):
         outputString += "\n"
     print(outputString, end='')
     print(f"----------------------------------------------")
-
-

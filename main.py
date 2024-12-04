@@ -43,7 +43,7 @@ def main():
     #Creating all POI flags, basically telling what to do and when 
     world["poiFlags"] = {}
     world["poiFlags"]["Front Door"] = {
-        "Key": True,
+        "Key": False,
         "Unlock": False,
         "Finish": False,
         "InKeyGame": False
@@ -95,8 +95,8 @@ def main():
                 userInput = getUserComm(world)
                 printFrontDoor(world, userInput)
             if world["playerLoc"] == world["POI"]["Parents Room"]:
-                print("parents room")
-                break
+                userInput = getUserComm(world)
+                printParentsRoom(world, userInput)
             if world["playerLoc"] == world["POI"]["Your Room"]:
                 print("your room")
                 break
