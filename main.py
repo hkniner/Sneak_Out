@@ -7,7 +7,7 @@ Dec 2, 2024
 from boardTools import *
 from gameTools import *
 from inputProcess import *
-from poiProcess import *
+from gameProcess import *
 import time
 
 def main():
@@ -21,7 +21,8 @@ def main():
     world["playerLoc"] = loc
     world["player"] = createPlayer()
     world["inMap"] = True
-    world["Stove"] = dndDiceRoll("4d2")
+    world["maxStove"] = sum(dndDiceRoll("4d2"))
+    world["Stove"] = world["maxStove"]
 
     #creating pois and locations
     world["POI"] = {}
@@ -44,7 +45,6 @@ def main():
     #Creating all POI flags, basically telling what to do and when 
     world["poiFlags"] = {}
     world["poiFlags"]["Front Door"] = {
-        "Key": False,
         "Unlock": False,
         "Finish": False,
         "InKeyGame": False
@@ -56,7 +56,6 @@ def main():
         "Final": False
     }
     world["poiFlags"]["Kitchen"] = {
-        "Stove": False,
         "Final": False,
     }
         

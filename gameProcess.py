@@ -60,22 +60,27 @@ def printFrontDoor(world, userInput):
                         count += 1
                         continue
 
-        if world["poiFlags"]["Front Door"]["Key"] == False:
+        if "key" not in world["player"]["inv"]:
             print("\nAs you approached the door and grabbed on the doorknob, you paused waiting for your freedom...")
             time.sleep(4)
             print("You jostled the door...")
             time.sleep(3)
             print("It's locked.\n")
+            time.sleep(1)
             return world
-        if world["poiFlags"]["Front Door"]["Key"] == True:
+        if "key" in world["player"]["inv"]:
             print("\nAs you approached the door and grabbed on the doorknob, you paused waiting for your freedom...")
             time.sleep(4)
             print("You jostled the door...")
             time.sleep(3)
             print("It's not locked, but as another failsafe, your annoying parents made a combination, there's a certain combination to turn the key.")
             print("(Return to this area to try a combination.)\n")
+            time.sleep(1)
             world["player"]["inv"].remove("key")
             world["poiFlags"]["Front Door"]["Unlock"] = True
+            world["poiFlags"]["Parents Room"]["Final"] = True
+            world["poiFlags"]["Your Room"]["Final"] = True
+            world["poiFlags"]["Kitchen"]["Final"] = True
             return world
 
 #PARENTS ROOM PRINT
@@ -212,7 +217,142 @@ def printYourRoom(world, userInput):
             return world
 
 def printKitchen(world, userInput):
-    print("testing")
+    import time
+    #Leave text and functionality
+    if userInput.lower().strip() == "leave":
+        print("\nYou walk out of the kitchen.\n")
+        time.sleep(2)
+        world["playerLoc"]["x"] = 1
+        world["playerLoc"]["y"] = 3
+        world["inMap"] = True
+        return world
+    #stove text and functionality
+    if userInput.lower().strip() == "stove":
+        if "steak" in world["player"]["inv"]:
+            print("\nYou walk towards the old stove with a steak.")
+            time.sleep(3)
+            print("You already have one, dont need another.")
+            time.sleep(2)
+            return world
+        else:
+            if world["Stove"] > 5:
+                print("\nYou walk towards the old stove with a steak.")
+                time.sleep(3)
+                print("You begin to cook the steak.")
+                time.sleep(3)
+                print("Looks edible.\n")
+                time.sleep(2)
+                world["player"]["inv"].append("steak")
+                world["Stove"] -=1
+                return world
+            if world["Stove"] == 1:
+                print("\nYou walk towards the old stove with a steak.")
+                time.sleep(3)
+                print("You begin to cook the steak.")
+                time.sleep(3)
+                print("Looks edible.\n")
+                print("The stove looks disasterous. It will break down after cooking one more steak.\n")
+                time.sleep(4)
+                world["player"]["inv"].append("steak")
+                world["Stove"] -=1
+                return world
+            if world["Stove"] <= 3:
+                print("\nYou walk towards the old stove with a steak.")
+                time.sleep(3)
+                print("You begin to cook the steak.")
+                time.sleep(3)
+                print("Looks edible.\n")
+                print("The stove looks really bad. It will break down soon.\n")
+                time.sleep(4)
+                world["player"]["inv"].append("steak")
+                world["Stove"] -=1
+                return world
+            if world["Stove"] <= 5:
+                print("\nYou walk towards the old stove with a steak.")
+                time.sleep(3)
+                print("You begin to cook the steak.")
+                time.sleep(3)
+                print("Looks edible.\n")
+                print("The stove looks worse for wear.\n")
+                time.sleep(4)
+                world["player"]["inv"].append("steak")
+                world["Stove"] -=1
+                return world
+    #Eat text depending on state of hunger levels.
+    if userInput.lower().strip() == "eat":
+        if world["player"]["hunger"] == world["player"]["maxHung"]:
+            print("\nCan't eat anymore. Already full.\n")
+            time.sleep(2)
+            return world
+        world["player"]["hunger"] += 5
+        if world["player"]["hunger"] >= world["player"]["maxHung"]:
+            print("\nYou ate the steak...")
+            time.sleep(2)
+            print("Very juicy, but kind of hard to get down...")
+            time.sleep(3)
+            print("You are now full!\n")
+            time.sleep(2)
+            world["player"]["hunger"] = world["player"]["maxHung"]
+            world["player"]["inv"].remove("steak")
+            return world
+        if world["player"]["hunger"] < world["player"]["maxHung"]:
+            print("\nYou ate the steak...")
+            time.sleep(2)
+            print("You were so hungry, you wolfed down the steak, loving every bit of the taste...")
+            time.sleep(3)
+            print("Very Good!\n")
+            time.sleep(2)
+            world["player"]["inv"].remove("steak")
+            return world
+    #Text for fridge and checks if in final state or not.
+    if userInput.lower().strip() == "fridge":
+        if world["poiFlags"]["Kitchen"]["Final"] == True:
+            print("\nYou open the fridge as it cool air blasts in your face...")
+            time.sleep(3)
+            print("Those pickles look delicious.")
+            time.sleep(1)
+            print("You impulsively grab from them but when you do you feel something on the backside...")
+            time.sleep(3)
+            print("Turning them around, you find a folded piece of paper attached to the pickles!\n")
+            time.sleep(2)
+            print("Opening the piece of paper it prints: '3rd: LEFT'\n")
+            time.sleep(4)
+            return world
+        else:
+            print("\nYou open the fridge as it cool air blasts in your face...")
+            time.sleep(3)
+            print("Looking around everything looks delicious to you.")
+            time.sleep(2)
+            print("You look longily at the pickles, the steak and the pizza rolls.")
+            time.sleep(3)
+            if world["player"]["hunger"] == world["player"]["maxHung"]:
+                print("MMM.....\n")
+                time.sleep(2)
+                return world
+            else:
+                print("You feel hungry...\n")
+                time.sleep(2)
+                return world
+    #Text for cabinet and checks if hungry or not
+    if userInput.lower().strip() == "cabinet":
+        print("\nYou open the wooden cabinet and look around...")
+        time.sleep(3)
+        print("The chips, popcorn and granola bars look delicious...")
+        time.sleep(2)
+        if world["player"]["hunger"] == world["player"]["maxHung"]:
+            print("MMM.....\n")
+            time.sleep(2)
+            return world
+        else:
+            print("You feel hungry...\n")
+            time.sleep(2)
+            return world
+            
+        
+
+
+
+
 
 
             
