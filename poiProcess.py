@@ -149,6 +149,7 @@ def printYourRoom(world, userInput):
         world["playerLoc"]["y"] = 5
         world["inMap"] = True
         return world
+    #Sleep text dependent on random roll
     if userInput.lower().strip() == "sleep":
         randchoice = random.randint(0,1)
         if randchoice == 0:
@@ -167,6 +168,7 @@ def printYourRoom(world, userInput):
             print("You need to get out of here.\n")
             time.sleep(2)
             return world
+    #Closet text dependent on if have slippers or not
     if userInput.lower().strip() == "closet":
         if "slippers" not in world["player"]["inv"]:
             print("\nYou open the closet doors and see multiple jackets you always wear.")
@@ -184,6 +186,7 @@ def printYourRoom(world, userInput):
             time.sleep(2)
             print("Nothing looks of use.\n")
             time.sleep(3)
+    #look around text dependent on if in final phase or not
     if userInput.lower().strip() == "lookaround":
         if world["poiFlags"]["Your Room"]["Final"] == True:
             print("\nYou look around your room examining harder than ever.")
@@ -207,6 +210,9 @@ def printYourRoom(world, userInput):
             print("Gross.")
             time.sleep(2)
             return world
+
+def printKitchen(world, userInput):
+    print("testing")
 
 
             

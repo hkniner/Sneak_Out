@@ -99,7 +99,7 @@ def main():
                 userInput = getUserComm(world)
                 printYourRoom(world, userInput)
             if world["playerLoc"] == world["POI"]["Kitchen"]:
-                print("kitchen")
-                break
+                userInput = getUserComm(world)
+                printKitchen(world, userInput)
 
 main()

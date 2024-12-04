@@ -63,6 +63,29 @@ def getUserComm(world):
                 print("Not a valid command.")
                 continue
             return userInput
+    #Kitchen Controls
+    if world["playerLoc"] == world["POI"]["Kitchen"]:
+        #Checks to see if steak is in inventory
+        if "steak" in world["player"]["inv"]:
+            validCommands = ["stove", "cabinet", "fridge", "eat", "leave"]
+            while True:
+                userInput = input("Where do you want to go?(stove, cabinet, fridge, eat, leave)\n:")
+                userInput = userInput.lower().strip()
+                if userInput not in validCommands:
+                    print("Not a valid command.")
+                    continue
+                return userInput
+        else:
+            validCommands = ["stove", "cabinet", "fridge", "leave"]
+            while True:
+                userInput = input("Where do you want to go?(stove, cabinet, fridge, leave)\n:")
+                userInput = userInput.lower().strip()
+                if userInput not in validCommands:
+                    print("Not a valid command.")
+                    continue
+                return userInput
+
+
              
 
         
