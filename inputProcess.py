@@ -7,9 +7,9 @@ while True loop that waits for a N E W S to be put into the terminal and returns
 def getUserComm(world):
     #Mini Map controls
     if world["inMap"] == True:
-        validCommands = ['n', 'e', 'w', 's']
+        validCommands = ['n', 'e', 'w', 's', 'inv']
         while True:
-                userInput = input("Enter a direction(n,e,w,s): ")
+                userInput = input("Enter a direction (n,e,w,s) or open 'inv'\n: ")
                 userInput = userInput.lower().strip()
                 if userInput not in validCommands:
                     print("Not a valid command")
@@ -117,12 +117,22 @@ def processUserComm(world, loc, userInput):
     if world["inMap"] == True:
         if userInput == 'e' and loc["x"] < len(world["board"])-1:
             loc["x"] += 1
+            world["player"]["hunger"] -=1
+            world["stats"]["Hunger Used"] +=1
         if userInput == 's' and loc["y"] < len(world["board"])-1:
             loc["y"] += 1
+            world["player"]["hunger"] -=1
+            world["stats"]["Hunger Used"] +=1
         if userInput == 'w' and loc["x"] > 0:
             loc["x"] -= 1
+            world["player"]["hunger"] -=1
+            world["stats"]["Hunger Used"] +=1
         if userInput == 'n' and loc["y"] > 0:
             loc["y"] -= 1
+            world["player"]["hunger"] -=1
+            world["stats"]["Hunger Used"] +=1
+        if userInput == 'inv':
+            printInventory(world)
     #Checks to see if at a POI
         if world["playerLoc"] == world["POI"]["Front Door"]:
             world["inMap"] = False
@@ -157,3 +167,20 @@ def getUserName():
             continue
 
         return userInput
+
+def printInventory(world):
+    import time
+    outputString = "Inventory: "
+    for i in world["player"]["inv"]:
+        if i == "slippers":
+            col_op = " \033[34mSlippers\033[0m ,"
+            outputString += col_op
+        if i == "key":
+            col_op = " \033[33mKey\033[0m ,"
+            outputString += col_op
+        if i == "steak":
+            col_op = " \033[31mSteak\033[0m ,"
+            outputString += col_op
+    print(outputString)
+    time.sleep(5)
+    

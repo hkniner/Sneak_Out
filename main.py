@@ -100,8 +100,6 @@ def main():
             #Asks user for command
             userInput = getUserComm(world)
             #Processes userInput
-            world["player"]["hunger"] -= 1
-            world["stats"]["Hunger Used"] += 1
             processUserComm(world, loc, userInput)
         if world["inMap"] == False:
             #Checks which POI player located at and prints dependent on that POI
