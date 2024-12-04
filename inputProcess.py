@@ -18,6 +18,7 @@ def getUserComm(world):
                 return userInput
     #Front Door controls
     if world["playerLoc"] == world["POI"]["Front Door"]:
+        #Checks if in Key Game at the end 
         if world["poiFlags"]["Front Door"]["InKeyGame"]:
             validCommands = ["right", "left", "leave"]
             while True:
@@ -36,18 +37,31 @@ def getUserComm(world):
                         print("Not a valid command")
                         continue
                     return userInput
+    #Parents room controls
     if world["playerLoc"] == world["POI"]["Parents Room"]:
+        #Checks to see if have slippers to enter room
         if "slippers" in world["player"]["inv"]:
             validCommands = ["closet", "dresser", "nightstand", "leave"]
             while True:
                     userInput = input("Where do you want to go?(closet, dresser, nightstand, leave)\n: ")
                     userInput = userInput.lower().strip()
                     if userInput not in validCommands:
-                        print("Not a valid command")
+                        print("Not a valid command.")
                         continue
                     return userInput
+        #If doesnt have slippers, automatically kicks out
         else:
             userInput = "leave"
+            return userInput
+    #Your Room Controls
+    if world["playerLoc"] == world["POI"]["Your Room"]:
+        validCommands = ["closet", "sleep", "lookaround", "leave"]
+        while True:
+            userInput = input("Where do you want to go?(closet, sleep, LookAround, leave)\n:")
+            userInput = userInput.lower().strip()
+            if userInput not in validCommands:
+                print("Not a valid command.")
+                continue
             return userInput
              
 

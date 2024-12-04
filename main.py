@@ -21,7 +21,7 @@ def main():
     world["playerLoc"] = loc
     world["player"] = createPlayer()
     world["inMap"] = True
-    world["player"]["inv"].append("slippers")
+    world["Stove"] = dndDiceRoll("4d2")
 
     #creating pois and locations
     world["POI"] = {}
@@ -96,8 +96,8 @@ def main():
                 userInput = getUserComm(world)
                 printParentsRoom(world, userInput)
             if world["playerLoc"] == world["POI"]["Your Room"]:
-                print("your room")
-                break
+                userInput = getUserComm(world)
+                printYourRoom(world, userInput)
             if world["playerLoc"] == world["POI"]["Kitchen"]:
                 print("kitchen")
                 break
