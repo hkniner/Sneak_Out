@@ -9,6 +9,7 @@ from gameTools import *
 from inputProcess import *
 from gameProcess import *
 import time
+from datetime import datetime
 
 def main():
     # Creating world and location of player
@@ -23,6 +24,17 @@ def main():
     world["inMap"] = True
     world["maxStove"] = sum(dndDiceRoll("4d2"))
     world["Stove"] = world["maxStove"]
+    world["GameWon"] = False
+    world["GameOver"] = False
+
+    #Creating Stats
+    world["stats"] = {}
+    creation_date = datetime.now()
+    creation_date = f"Character created on: {creation_date}"
+    world["stats"]["Date of Creation"] = creation_date
+    world["stats"]["Cycle Count"] = 0
+    world["stats"]["Hunger Used"] = 0
+    world["stats"]["Items Collected"] = []
 
     #creating pois and locations
     world["POI"] = {}
@@ -73,8 +85,12 @@ def main():
 
     #Gameplay loop
     while True:
+        world["stats"]["Cycle Count"] += 1
         #Checks to see if game is done
         if world["poiFlags"]["Front Door"]["Finish"] == True:
+            world["GameWon"] = True
+            break
+        if world["GameOver"] == True:
             break
         #Checks to see if in minimap
         if world["inMap"] == True:
@@ -85,6 +101,7 @@ def main():
             userInput = getUserComm(world)
             #Processes userInput
             world["player"]["hunger"] -= 1
+            world["stats"]["Hunger Used"] += 1
             processUserComm(world, loc, userInput)
         if world["inMap"] == False:
             #Checks which POI player located at and prints dependent on that POI

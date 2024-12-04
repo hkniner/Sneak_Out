@@ -109,6 +109,10 @@ def getUserComm(world):
 
     
 def processUserComm(world, loc, userInput):
+    #Checks to see if hunger drops to 0
+    if world["player"]["hunger"] == 0:
+        world["GameOver"] = True
+        return world
     #Checks to see if in minimap
     if world["inMap"] == True:
         if userInput == 'e' and loc["x"] < len(world["board"])-1:
