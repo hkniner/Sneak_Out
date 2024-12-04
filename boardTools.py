@@ -23,9 +23,9 @@ board: list that represents the board size
 def printBoard(world):
     outputString = "" #Empty String
     board = world["board"]
-    dashct = 13 - (-1 * len(world["player"]["name"]))
-    dashstr = (dashct - 10) * "-"
-    print(f"-------------{world["player"]["name"]}'s HOUSE" + f"{dashstr}")
+    dashct = 21 - ((len(world["player"]["name"]) - 11) + 5)
+    dashstr = dashct * "-"
+    print(f"---------{world["player"]["name"]}'s HOUSE" + f"{dashstr}")
     for row in range(len(board)):
 
         for col in range(len(board)):
@@ -74,4 +74,4 @@ def printBoard(world):
                 outputString += f"[{" ":2}]"
         outputString += "\n"
     print(outputString, end='')
-    print(f"----------------------------------------------")
+    print(f"---------------------------------")

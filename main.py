@@ -21,6 +21,7 @@ def main():
     world["playerLoc"] = loc
     world["player"] = createPlayer()
     world["inMap"] = True
+    world["player"]["inv"].append("slippers")
 
     #creating pois and locations
     world["POI"] = {}
@@ -49,12 +50,9 @@ def main():
         "InKeyGame": False
     }
     world["poiFlags"]["Parents Room"] = {
-        "Slippers": False,
-        "Key": False,
         "Final": False,
     }
     world["poiFlags"]["Your Room"] = {
-        "Slippers": False,
         "Final": False
     }
     world["poiFlags"]["Kitchen"] = {

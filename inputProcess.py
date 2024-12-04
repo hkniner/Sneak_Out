@@ -37,7 +37,7 @@ def getUserComm(world):
                         continue
                     return userInput
     if world["playerLoc"] == world["POI"]["Parents Room"]:
-        if world["poiFlags"]["Parents Room"]["Slippers"] == True:
+        if "slippers" in world["player"]["inv"]:
             validCommands = ["closet", "dresser", "nightstand", "leave"]
             while True:
                     userInput = input("Where do you want to go?(closet, dresser, nightstand, leave)\n: ")

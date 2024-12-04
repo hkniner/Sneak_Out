@@ -30,7 +30,6 @@ def printFrontDoor(world, userInput):
 
                     #Check if done then returns result
 
-                    print(count)
                     if i == 4:
                         if count == 3:
                             print("\nThe Door is now Unlocked!")
@@ -52,15 +51,12 @@ def printFrontDoor(world, userInput):
                         world["poiFlags"]["Front Door"]["InKeyGame"] = False
                         return world
                     if i == 1 and userInput == correct_combo[i]:
-                        print("all set")
                         count += 1
                         continue
                     if i == 2 and userInput == correct_combo[i]:
-                        print("all set")
                         count += 1
                         continue
                     if i == 3 and userInput == correct_combo[i]:
-                        print("all set")
                         count += 1
                         continue
 
@@ -96,6 +92,50 @@ def printParentsRoom(world, userInput):
         world["playerLoc"]["y"] = 3
         world["inMap"] = True
         return world
+    #Detail text for dresser if the game is in final state or if its not
+    if userInput.lower().strip() == "dresser":
+        if world["poiFlags"]["Parents Room"]["Final"] != True:
+            print("\nYou slowly open the drawer, trying not to make a sound...")
+            time.sleep(2)
+            print("Nothing but your mom's clothes. It smells of perfume\n")
+            return world
+        else:
+            print("\nYou slowly open the drawer, trying not to make a sound...")
+            time.sleep(2)
+            print("Nothing but your mom's clothes. It smells of perfume...")
+            time.sleep(2)
+            print("You rustle through the clothes, ignoring the overpowering smell.")
+            time.sleep(3)
+            print("You find a folded up piece of paper.")
+            time.sleep(2)
+            print("You unfold it and start reading...")
+            time.sleep(3)
+            print("It prints: '1st: RIGHT'\n")
+            time.sleep(1)
+            print("You wonder what it means.\n")
+            return world
+    if userInput.lower().strip() == "nightstand":
+        if "key" in world["player"]["inv"] or world["poiFlags"]["Parents Room"]["Final"] == True:
+            print("\nYou open the drawer as quietly as possible, your dad's snores growing louder...")
+            time.sleep(3)
+            print("Nothing but a pack of gum and iPhone charger now.\n")
+        else:
+            print("\n You open the drawer as quietly as possible, your dad's snores growing louder...")
+            time.sleep(3)
+            print("Rustling around finding various objects like a pack of gum, you spot something...")
+            time.sleep(3)
+            print("You pick up a shiny key... It may be useful.\n")
+            time.sleep(2)
+            world["player"]["inv"].append("key")
+            print(world["player"]["inv"])
+            return world
+    if userInput.lower().strip() == "closet":
+        print("You open the closet door slowly, the door is creaky...")
+        time.sleep(2)
+        print("Nothing useful in here.")
+        return world
+
+            
     
     
             
