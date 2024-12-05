@@ -76,7 +76,6 @@ def printFrontDoor(world, userInput):
             print("It's not locked, but as another failsafe, your annoying parents made a combination, there's a certain combination to turn the key.")
             print("(Return to this area to try a combination.)\n")
             time.sleep(1)
-            world["player"]["inv"].remove("key")
             world["poiFlags"]["Front Door"]["Unlock"] = True
             world["poiFlags"]["Parents Room"]["Final"] = True
             world["poiFlags"]["Your Room"]["Final"] = True
@@ -134,6 +133,7 @@ def printParentsRoom(world, userInput):
             print("You pick up a shiny key... It may be useful.\n")
             time.sleep(2)
             world["player"]["inv"].append("key")
+            world["stats"]["Items Collected"].append("key")
             return world
         #text for closet
     if userInput.lower().strip() == "closet":
@@ -183,6 +183,7 @@ def printYourRoom(world, userInput):
             print("Perfect.\n")
             time.sleep(3)
             world["player"]["inv"].append("slippers")
+            world["stats"]["Items Collected"].append("slippers")
             return world
         else:
             print("\nYou open the closet doors and see multiple jackets you always wear.")
@@ -243,6 +244,7 @@ def printKitchen(world, userInput):
                 print("Looks edible.\n")
                 time.sleep(2)
                 world["player"]["inv"].append("steak")
+                world["stats"]["Items Collected"].append("steak")
                 world["Stove"] -=1
                 return world
             if world["Stove"] == 1:
@@ -254,6 +256,7 @@ def printKitchen(world, userInput):
                 print("The stove looks disasterous. It will break down after cooking one more steak.\n")
                 time.sleep(4)
                 world["player"]["inv"].append("steak")
+                world["stats"]["Items Collected"].append("steak")
                 world["Stove"] -=1
                 return world
             if world["Stove"] <= 3:
@@ -265,6 +268,7 @@ def printKitchen(world, userInput):
                 print("The stove looks really bad. It will break down soon.\n")
                 time.sleep(4)
                 world["player"]["inv"].append("steak")
+                world["stats"]["Items Collected"].append("steak")
                 world["Stove"] -=1
                 return world
             if world["Stove"] <= 5:
@@ -276,6 +280,7 @@ def printKitchen(world, userInput):
                 print("The stove looks worse for wear.\n")
                 time.sleep(4)
                 world["player"]["inv"].append("steak")
+                world["stats"]["Items Collected"].append("steak")
                 world["Stove"] -=1
                 return world
     #Eat text depending on state of hunger levels.

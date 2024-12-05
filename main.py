@@ -8,8 +8,10 @@ from boardTools import *
 from gameTools import *
 from inputProcess import *
 from gameProcess import *
-import time
+from statsProcess import *
 from datetime import datetime
+import time
+
 
 def main():
     # Creating world and location of player
@@ -22,7 +24,7 @@ def main():
     world["playerLoc"] = loc
     world["player"] = createPlayer()
     world["inMap"] = True
-    world["maxStove"] = sum(dndDiceRoll("4d2"))
+    world["maxStove"] = sum(dndDiceRoll("6d2"))
     world["Stove"] = world["maxStove"]
     world["GameWon"] = False
     world["GameOver"] = False
@@ -32,6 +34,7 @@ def main():
     creation_date = datetime.now()
     creation_date = f"Character created on: {creation_date}"
     world["stats"]["Date of Creation"] = creation_date
+    world["stats"]["start time"] = time.time()
     world["stats"]["Cycle Count"] = 0
     world["stats"]["Hunger Used"] = 0
     world["stats"]["Items Collected"] = []
@@ -115,5 +118,17 @@ def main():
             if world["playerLoc"] == world["POI"]["Kitchen"]:
                 userInput = getUserComm(world)
                 printKitchen(world, userInput)
+    #Finishing up statistics then processing
+    world["stats"]["end time"] = time.time()
+    world["stats"]["Time Played"] = world["stats"]["start time"] - world["stats"]["end time"]
+
+    statString = processStats(world)
+    print(statString)
+
+
+        
+    if world["GameOver"] == True:
+        print(f"\n{world["player"]["name"]} fell to the ground as his conciousness left...\n")
+        print(f"\nGAME OVER...\n")
 
 main()

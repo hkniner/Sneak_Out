@@ -170,7 +170,7 @@ def getUserName():
 
 def printInventory(world):
     import time
-    outputString = "Inventory: "
+    outputString = "[Inventory] : "
     for i in world["player"]["inv"]:
         if i == "slippers":
             col_op = " \033[34mSlippers\033[0m ,"
@@ -183,4 +183,19 @@ def printInventory(world):
             outputString += col_op
     print(outputString)
     time.sleep(5)
+
+def getStatInventory(world):
+    outputString = ""
+    for i in world["stats"]["Items Collected"]:
+        if i == "slippers":
+            col_op = " \033[34mSlippers\033[0m ,"
+            outputString += col_op
+        if i == "key":
+            col_op = " \033[33mKey\033[0m ,"
+            outputString += col_op
+        if i == "steak":
+            col_op = " \033[31mSteak\033[0m ,"
+            outputString += col_op
+    return outputString
+    
     

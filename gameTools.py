@@ -95,7 +95,7 @@ def createPlayer():
     player["name"] = getUserName()
     player["color"] = getColor()
     player["name"] = setColor(player["color"], player["name"])
-    maxhunger = dndDiceRoll("8d2")
+    maxhunger = dndDiceRoll("10d2")
     player["maxHung"] = sum(maxhunger)
     player["hunger"] = player["maxHung"]
     player["inv"] = []
