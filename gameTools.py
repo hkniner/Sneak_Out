@@ -105,3 +105,19 @@ def printHunger(world):
     starct = world["player"]["hunger"] * "*"
     output_string = "[Hunger] :" + starct
     print(output_string)
+
+def processStats(world):
+    outputString = " "
+    dashct = 21 - ((len(world["player"]["name"]) - 11) + 5)
+    dashstr = dashct * "-"
+    print(f"---------{world["player"]["name"]}" + f"{dashstr}")
+
+    outputString += f"{world["stats"]["Date of Creation"]}\n"
+    outputString += f"Name: {world["player"]["name"]}\n"
+    outputString += f"Time played: {world["stats"]["Time Played"]}\n"
+    outputString += f"# of Cycles: {world["stats"]["Cycle Count"]}\n"
+    outputString += f"Hunger used: {world["stats"]["Hunger Used"]}\n"
+    outputInv = getStatInventory(world)
+    outputString += f"Items Collected: {outputInv}\n"
+    outputString += "-------------------------"
+    return outputString

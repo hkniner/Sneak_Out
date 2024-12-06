@@ -8,7 +8,6 @@ from boardTools import *
 from gameTools import *
 from inputProcess import *
 from gameProcess import *
-from statsProcess import *
 from datetime import datetime
 import time
 
@@ -121,14 +120,14 @@ def main():
     #Finishing up statistics then processing
     world["stats"]["end time"] = time.time()
     world["stats"]["Time Played"] = world["stats"]["start time"] - world["stats"]["end time"]
-
     statString = processStats(world)
-    print(statString)
-
 
         
     if world["GameOver"] == True:
         print(f"\n{world["player"]["name"]} fell to the ground as his conciousness left...\n")
-        print(f"\nGAME OVER...\n")
+        print(f"\nGAME OVER!!!\n")
+    else:
+        print("testing") 
+
 
 main()
