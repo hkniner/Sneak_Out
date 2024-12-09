@@ -20,7 +20,7 @@ def main():
         f.close()
     except:
         f = open("data.csv", "w")
-        f.write("open,date,name,played,cycles,hunger,items,close")
+        f.write("date,name,played,cycles,hunger,items")
         f.write("\n")
         f.close()
     # Creating world and location of player
@@ -88,13 +88,13 @@ def main():
     #Intro Cutscene
 
     print(f"As the night's got warmer and the day's became longer {world["player"]["name"]} was lying in their bed...")
-    time.sleep(4)
+    #time.sleep(4)
     print("With a growing urge that could not be ignored any longer...")
-    time.sleep(4)
+    #time.sleep(4)
     print("The urge to...")
-    time.sleep(2)
+    #time.sleep(2)
     print("SNEAK OUT!!!!")
-    time.sleep(2)
+    #time.sleep(2)
 
 
     #Gameplay loop

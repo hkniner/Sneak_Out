@@ -1,71 +1,143 @@
  
----------HEN-------------
-Character created on: 2024-12-09 09:22:28.535420
-Name: HEN
-Time played: 12.016275882720947
+---------HENRY-----------
+Character created on: 2024-12-09 10:43:52.322170
+Name: HENRY
+Time played: 12.020405054092407
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TEST------------
+Character created on: 2024-12-09 10:48:01.136929
+Name: TEST
+Time played: 12.019788026809692
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TEST1-----------
+Character created on: 2024-12-09 10:49:10.355497
+Name: TEST1
+Time played: 12.019568920135498
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TEST3-----------
+Character created on: 2024-12-09 10:53:21.105176
+Name: TEST3
+Time played: 12.018447160720825
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TESTPLEAE-------
+Character created on: 2024-12-09 11:06:42.057946
+Name: TESTPLEAE
+Time played: 12.020188093185425
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TESTPLZZZ-------
+Character created on: 2024-12-09 11:08:08.917418
+Name: TESTPLZZZ
+Time played: 12.016231060028076
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TESTPLZ---------
+Character created on: 2024-12-09 11:10:28.538039
+Name: TESTPLZ
+Time played: 12.015944242477417
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------HENRY-----------
+Character created on: 2024-12-09 11:11:47.321953
+Name: HENRY
+Time played: 12.017448902130127
 # of Cycles: 1
 Hunger used: 0
 Items Collected: 
 -------------------------
  
 ---------RED-------------
-Character created on: 2024-12-09 09:23:48.958802
+Character created on: 2024-12-09 11:51:39.968964
 Name: RED
-Time played: 12.016077756881714
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------HEN-------------
-Character created on: 2024-12-09 09:31:47.360047
-Name: HEN
-Time played: 12.020312786102295
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------PLASD-----------
-Character created on: 2024-12-09 09:33:00.963933
-Name: PLASD
-Time played: 12.015950202941895
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------KOCH------------
-Character created on: 2024-12-09 09:41:15.860526
-Name: KOCH
-Time played: 12.013243198394775
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------TEST-----------
-Character created on: 2024-12-09 09:42:26.391860
-Name: TEST
-Time played: 12.017241716384888
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------AAAAH-----------
-Character created on: 2024-12-09 09:43:17.741932
-Name: AAAAH
-Time played: 12.020362138748169
+Time played: 0.00011277198791503906
 # of Cycles: 1
 Hunger used: 0
 Items Collected: 
 -------------------------
  
 ---------HENR------------
-Character created on: 2024-12-09 09:54:13.539237
+Character created on: 2024-12-09 11:53:19.209845
 Name: HENR
-Time played: 12.016985893249512
+Time played: 6.580352783203125e-05
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------RED-------------
+Character created on: 2024-12-09 11:53:58.420387
+Name: RED
+Time played: 7.510185241699219e-05
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------RED-------------
+Character created on: 2024-12-09 11:54:55.185669
+Name: RED
+Time played: 6.4849853515625e-05
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------HEN-------------
+Character created on: 2024-12-09 11:58:07.989519
+Name: HEN
+Time played: 7.486343383789062e-05
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------HENRY-----------
+Character created on: 2024-12-09 11:59:56.912228
+Name: HENRY
+Time played: 9.083747863769531e-05
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------RED-------------
+Character created on: 2024-12-09 12:00:39.340093
+Name: RED
+Time played: 7.891654968261719e-05
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TEST------------
+Character created on: 2024-12-09 12:03:33.765084
+Name: TEST
+Time played: 8.082389831542969e-05
 # of Cycles: 1
 Hunger used: 0
 Items Collected: 

@@ -397,8 +397,8 @@ def printPostgame(world, userInput):
         time.sleep(3)
         exit()
     if userInput.lower().strip() == "stats":
-        #stats = readStats(world)
-        #print(stats)
+        stats = readStats(world)
+        print(stats)
         time.sleep(3)
 
             
