@@ -8,11 +8,21 @@ from boardTools import *
 from gameTools import *
 from inputProcess import *
 from gameProcess import *
+from fileProcess import *
 from datetime import datetime
 import time
 
 
 def main():
+    # Creating csv.data file
+    try:
+        f = open("data.csv", "r")
+        f.close()
+    except:
+        f = open("data.csv", "w")
+        f.write("open,date,name,played,cycles,hunger,items,close")
+        f.write("\n")
+        f.close()
     # Creating world and location of player
     world = {}
     loc = {
@@ -25,12 +35,14 @@ def main():
     world["inMap"] = True
     world["maxStove"] = sum(dndDiceRoll("6d2"))
     world["Stove"] = world["maxStove"]
-    world["GameWon"] = False
+    world["GameWon"] = True
     world["GameOver"] = False
+    world["PostGame"] = False
 
     #Creating Stats
     world["stats"] = {}
     creation_date = datetime.now()
+    world["stats"]["docStr"] = creation_date
     creation_date = f"Character created on: {creation_date}"
     world["stats"]["Date of Creation"] = creation_date
     world["stats"]["start time"] = time.time()
@@ -60,7 +72,7 @@ def main():
     world["poiFlags"] = {}
     world["poiFlags"]["Front Door"] = {
         "Unlock": False,
-        "Finish": False,
+        "Finish": True,
         "InKeyGame": False
     }
     world["poiFlags"]["Parents Room"] = {
@@ -119,15 +131,20 @@ def main():
                 printKitchen(world, userInput)
     #Finishing up statistics then processing
     world["stats"]["end time"] = time.time()
-    world["stats"]["Time Played"] = world["stats"]["start time"] - world["stats"]["end time"]
-    statString = processStats(world)
+    world["stats"]["Time Played"] = world["stats"]["end time"] - world["stats"]["start time"]
+    txtStatString = processTxtStats(world)
 
         
     if world["GameOver"] == True:
         print(f"\n{world["player"]["name"]} fell to the ground as his conciousness left...\n")
         print(f"\nGAME OVER!!!\n")
     else:
-        print("testing") 
+        world["PostGame"] = True
+        writeStats(world)
+        while True:
+            userInput = getUserComm(world)
+            printPostgame(world, userInput)
+
 
 
 main()

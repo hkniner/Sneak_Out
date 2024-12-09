@@ -1,5 +1,11 @@
 import random
 from inputProcess import *
+'''
+setColor():
+asks user for choice of valid colors and outputs a string to that color of choice
+It takes 2 parameters:
+color - string that needs to be in valid_Colors, string - any piece of text that user wants changed
+'''
 
 def setColor(color, string):
     valid_Colors = ["red", "green", "yellow", "blue", "purple", "none"]
@@ -38,6 +44,13 @@ def setColor(color, string):
         print("An Unexpected Error Occured.")
         return string
 
+'''
+getColor():
+similar to setColor()
+asks user for choice of valid colors and outputs the color chosen in a string
+It takes no parameters
+'''
+
 def getColor():
     #List of valid colors
     valid_Colors = ["red", "green", "yellow", "blue", "none"]
@@ -67,7 +80,13 @@ def getColor():
         else:
             print("Invalid Color.")
             continue
-    
+
+'''
+dndDiceRoll():
+Takes a string and rolls a user set number of dices that have a user set number of sides and returns results in a list.
+It has 1 parameter:
+dstr - a string that is formatted as "xdy" x being the number of dice and y being the number of sides - d is always d
+'''
 def dndDiceRoll(dstr):
     rolls = []
     try:
@@ -89,10 +108,18 @@ def dndDiceRoll(dstr):
         rolls.append(randNum)
     return rolls
 
+'''
+createPlayer():
+creates a player based on user information given and throws it all into a dictionary for the player
+some include name(color), name(plain), user color, max hunger and current hunger and the player inventory
+It has no parameters.
+'''
+
 def createPlayer():
     player = {
     }
     player["name"] = getUserName()
+    player["txtName"] = player["name"]
     player["color"] = getColor()
     player["name"] = setColor(player["color"], player["name"])
     maxhunger = dndDiceRoll("10d2")
@@ -101,17 +128,31 @@ def createPlayer():
     player["inv"] = []
     return player
 
+'''
+printHunger():
+takes the current hunger of the player and multiplys it into a star count and
+prints a counter that shows the current hunger level.
+It takes 1 parameter:
+world - to see the current player hunger
+'''
+
 def printHunger(world):
     starct = world["player"]["hunger"] * "*"
     output_string = "[Hunger] :" + starct
     print(output_string)
 
+'''
+processStats():
+takes all different statistics from player and adds it to an output string to be seen in a more orderly fashion
+It takes 1 parameter:
+world - to see player stats
+'''
+
 def processStats(world):
     outputString = " "
     dashct = 21 - ((len(world["player"]["name"]) - 11) + 5)
     dashstr = dashct * "-"
-    print(f"---------{world["player"]["name"]}" + f"{dashstr}")
-
+    outputString +=(f"\n---------{world["player"]["name"]}" + f"{dashstr}\n")
     outputString += f"{world["stats"]["Date of Creation"]}\n"
     outputString += f"Name: {world["player"]["name"]}\n"
     outputString += f"Time played: {world["stats"]["Time Played"]}\n"
@@ -119,5 +160,20 @@ def processStats(world):
     outputString += f"Hunger used: {world["stats"]["Hunger Used"]}\n"
     outputInv = getStatInventory(world)
     outputString += f"Items Collected: {outputInv}\n"
-    outputString += "-------------------------"
+    outputString += "-------------------------\n"
+    return outputString
+
+def processTxtStats(world):
+    outputString = " "
+    dashct = 21 - ((len(world["player"]["name"]) - 11) + 5)
+    dashstr = dashct * "-"
+    outputString += (f"\n---------{world["player"]["txtName"]}" + f"{dashstr}\n")
+    outputString += f"{world["stats"]["Date of Creation"]}\n"
+    outputString += f"Name: {world["player"]["txtName"]}\n"
+    outputString += f"Time played: {world["stats"]["Time Played"]}\n"
+    outputString += f"# of Cycles: {world["stats"]["Cycle Count"]}\n"
+    outputString += f"Hunger used: {world["stats"]["Hunger Used"]}\n"
+    outputInv = getTxtInventory(world)
+    outputString += f"Items Collected: {outputInv}\n"
+    outputString += "-------------------------\n"
     return outputString

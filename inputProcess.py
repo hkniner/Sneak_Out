@@ -1,10 +1,22 @@
 
 '''
 getUserComm:
-while True loop that waits for a N E W S to be put into the terminal and returns it
-1 parameter, world
+function that checks where user is and gives them a while true loop with options on what to pick
+from a list of valid commands.
+It has 1 parameter: 
+world - Get information of what player has done and where they are at
 '''
 def getUserComm(world):
+    #PostGame controls
+    if world["PostGame"] == True:
+        validCommands = ["stats", "quit"]
+        while True:
+            userInput = input("Either quit or view player stats(stats, quit)\n:")
+            userInput = userInput.lower().strip()
+            if userInput not in validCommands:
+                print("Not a valid command.")
+                continue
+            return userInput
     #Mini Map controls
     if world["inMap"] == True:
         validCommands = ['n', 'e', 'w', 's', 'inv']
@@ -105,9 +117,12 @@ def getUserComm(world):
                         print("Not a valid command.")
                         continue
                     return userInput
-
-
-    
+'''
+processUserComm():
+takes a userInput and state of the world and changes a part of the player(location, death, in map or not) and returns it.
+It has 3 parameters:
+world - player location, hunger and stats as well to set flags, loc - change player location, userInput - see what user has done
+''' 
 def processUserComm(world, loc, userInput):
     #Checks to see if hunger drops to 0
     if world["player"]["hunger"] == 0:
@@ -145,7 +160,7 @@ def processUserComm(world, loc, userInput):
         return world, loc
 
 '''
-getUserName: 
+getUserName(): 
 asks user to name character and returns that name
 does not allow names larger than 10 char and less than 3 char
 no parameters
@@ -167,6 +182,12 @@ def getUserName():
             continue
 
         return userInput
+'''
+printInventory(): 
+takes user collected items, and throws them into one output string to see it clearly then prints string before pausing game
+It has 1 parameter:
+world - to see inventory items
+'''
 
 def printInventory(world):
     import time
@@ -184,6 +205,13 @@ def printInventory(world):
     print(outputString)
     time.sleep(5)
 
+'''
+getStatInventory(): 
+similar to printInventory but puts all items collected and doesnt remove any into one string and returns it
+It has 1 parameter:
+world - to see items collected
+'''
+
 def getStatInventory(world):
     outputString = ""
     for i in world["stats"]["Items Collected"]:
@@ -196,6 +224,29 @@ def getStatInventory(world):
         if i == "steak":
             col_op = " \033[31mSteak\033[0m ,"
             outputString += col_op
+    return outputString
+
+'''
+getTxtInventory(): 
+similar to getStatInventory but puts all items collected and doesnt remove any into one string that can
+be read by a .txt file and returns it
+It has 1 parameter:
+world - to see items collected
+'''
+
+def getTxtInventory(world):
+    count = 0
+    outputString = ""
+    for i in world["stats"]["Items Collected"]:
+        if i == "slippers":
+            col_op = " Slippers ,"
+            outputString += col_op
+        if i == "key":
+            col_op = " Key ,"
+            outputString += col_op
+        if i == "steak":
+            count += 1
+        col_op = f" Steak x {count}"
     return outputString
     
     

@@ -1,4 +1,12 @@
 from inputProcess import *
+from fileProcess import *
+
+'''
+printFrontDoor:
+Checks for certain flags and uses the userInput to give certain text and flags back to the world
+It takes 2 parameters:
+A world - see where everything is and where the player is at in the game, userInput - make choices based on users Input.
+'''
 
 #FRONT DOOR PRINT
 def printFrontDoor(world, userInput):
@@ -81,6 +89,13 @@ def printFrontDoor(world, userInput):
             world["poiFlags"]["Your Room"]["Final"] = True
             world["poiFlags"]["Kitchen"]["Final"] = True
             return world
+        
+'''
+printParentsRoom:
+Checks for certain flags and uses the userInput to give certain text and flags back to the world
+It takes 2 parameters:
+A world - see where everything is and where the player is at in the game, userInput - make choices based on users Input.
+'''
 
 #PARENTS ROOM PRINT
 def printParentsRoom(world, userInput):
@@ -141,6 +156,13 @@ def printParentsRoom(world, userInput):
         time.sleep(2)
         print("Nothing useful in here.\n")
         return world
+
+'''
+printYourRoom:
+Checks for certain flags and uses the userInput to give certain text and flags back to the world
+It takes 2 parameters:
+A world - see where everything is and where the player is at in the game, userInput - make choices based on users Input.
+'''
     
 #YOUR ROOM PRINT
 def printYourRoom(world, userInput):
@@ -216,6 +238,13 @@ def printYourRoom(world, userInput):
             print("Gross.")
             time.sleep(2)
             return world
+
+'''
+printKitchen:
+Checks for certain flags and uses the userInput to give certain text and flags back to the world
+It takes 2 parameters:
+A world - see where everything is and where the player is at in the game, userInput - make choices based on users Input.
+'''
 
 def printKitchen(world, userInput):
     import time
@@ -352,6 +381,26 @@ def printKitchen(world, userInput):
             print("You feel hungry...\n")
             time.sleep(2)
             return world
+        
+'''
+printPostgame:
+Checks for certain flags and uses the userInput to give certain text and flags back to the world
+End Game loop
+It takes 2 parameters:
+A world - see where everything is and where the player is at in the game, userInput - make choices based on users Input.
+'''
+
+def printPostgame(world, userInput):
+    import time
+    if userInput.lower().strip() == "quit":
+        print("\nThank you for playing!\n")
+        time.sleep(3)
+        exit()
+    if userInput.lower().strip() == "stats":
+        #stats = readStats(world)
+        #print(stats)
+        time.sleep(3)
+
             
         
 

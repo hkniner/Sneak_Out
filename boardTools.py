@@ -18,7 +18,7 @@ def createBoard(boardSize):
 printBoard
 puts board into outputString and displays it as a boardSize x boardSize board
 It takes one parameter:
-board: list that represents the board size
+world: dictionary that contains the board list
 '''
 def printBoard(world):
     outputString = "" #Empty String
