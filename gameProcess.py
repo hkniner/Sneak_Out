@@ -1,5 +1,16 @@
 from inputProcess import *
 from fileProcess import *
+from gameTools import *
+
+#Colors for dialouge purposes
+SLIPPERS = setColor("blue", "SLIPPERS")
+KEY = setColor("yellow", "KEY")
+STEAK = setColor("red", "STEAK")
+
+def printYOUColor(world):
+    YOU = setColor(world["player"]["color"],"YOU")
+    return YOU
+
 
 '''
 printFrontDoor:
@@ -13,7 +24,7 @@ def printFrontDoor(world, userInput):
     import time
     #Detail text and leaving room
     if userInput.lower().strip() == "leave":
-        print("You leave the daunting door as your want for freedom grows.\n")
+        print(f"{printYOUColor(world)} leave the daunting door as your want for freedom grows.\n")
         world["playerLoc"]["x"] = 3
         world["playerLoc"]["y"] = 1
         world["inMap"] = True
@@ -23,11 +34,11 @@ def printFrontDoor(world, userInput):
         #Checks to see if have key and want to sneakout
 
         if world["poiFlags"]["Front Door"]["Unlock"] == True:
-            print("\nAs you approached the door and grabbed on the doorknob, you paused waiting for your freedom...")
+            print(f"\nAs {printYOUColor(world)} approached the door and grabbed on the doorknob, you paused waiting for your freedom...")
             time.sleep(4)
-            print("You jostled the door...")
+            print(f"{printYOUColor(world)} jostled the door...")
             time.sleep(3)
-            print("You try to open it...\n")
+            print(f"{printYOUColor(world)} try to open it...\n")
 
             #Key Game
             
@@ -40,12 +51,21 @@ def printFrontDoor(world, userInput):
 
                     if i == 4:
                         if count == 3:
+                            #Final cutscene
                             print("\nThe Door is now Unlocked!")
+                            time.sleep(3)
+                            print(f"{printYOUColor(world)} step outside as the warm breeze hits your face.")
+                            time.sleep(3)
+                            print("What now?")
+                            time.sleep(3)
+                            print("\nTHE END.\n")
+                            time.sleep(3)
+                            #Setting flags, not in keygame and game is finished teleporting to PostGame
                             world["poiFlags"]["Front Door"]["Finish"] = True
                             world["poiFlags"]["Front Door"]["InKeyGame"] = False
                             return world
                         else:
-                            print("\nYou jostled the door knob more and more but...")
+                            print(f"\n{printYOUColor(world)} jostled the door knob more and more but...")
                             print("Its still locked.\n")
                             world["poiFlags"]["Front Door"]["InKeyGame"] = False
                             return world
@@ -54,7 +74,7 @@ def printFrontDoor(world, userInput):
 
                     #Checks to see if individual response correct then adds something to list
                     if userInput == "leave":
-                        print("\nYou jostled the door knob more and more but...")
+                        print(f"\n{printYOUColor(world)} jostled the door knob more and more but...")
                         print("Its still locked.\n")
                         world["poiFlags"]["Front Door"]["InKeyGame"] = False
                         return world
@@ -69,17 +89,17 @@ def printFrontDoor(world, userInput):
                         continue
 
         if "key" not in world["player"]["inv"]:
-            print("\nAs you approached the door and grabbed on the doorknob, you paused waiting for your freedom...")
+            print(f"\nAs {printYOUColor(world)} approached the door and grabbed on the doorknob, {printYOUColor(world)} paused waiting for your freedom...")
             time.sleep(4)
-            print("You jostled the door...")
+            print(f"{printYOUColor(world)} jostled the door...")
             time.sleep(3)
             print("It's locked.\n")
             time.sleep(1)
             return world
         if "key" in world["player"]["inv"]:
-            print("\nAs you approached the door and grabbed on the doorknob, you paused waiting for your freedom...")
+            print(f"\nAs {printYOUColor(world)} approached the door and grabbed on the doorknob, {printYOUColor(world)} paused waiting for your freedom...")
             time.sleep(4)
-            print("You jostled the door...")
+            print(f"{printYOUColor(world)} jostled the door...")
             time.sleep(3)
             print("It's not locked, but as another failsafe, your annoying parents made a combination, there's a certain combination to turn the key.")
             print("(Return to this area to try a combination.)\n")
@@ -103,10 +123,10 @@ def printParentsRoom(world, userInput):
     #Detail text and leaving room
     if userInput.lower().strip() == "leave":
         if "slippers" not in world["player"]["inv"]:
-            print("You need shoes that will make sure nobody hears a peep.")
-            print("You shut the door as quietly as possible in hopes your parents don't hear the creaks of the door.\n")
+            print(f"{printYOUColor(world)} need shoes that will make sure nobody hears a peep.")
+            print(f"{printYOUColor(world)} shut the door as quietly as possible in hopes your parents don't hear the creaks of the door.\n")
         else:
-            print("You shut the door as quietly as possible in hopes your parents don't hear the creaks of the door.\n")
+            print(f"{printYOUColor(world)} shut the door as quietly as possible in hopes your parents don't hear the creaks of the door.\n")
         time.sleep(3)
         world["playerLoc"]["x"] = 5
         world["playerLoc"]["y"] = 3
@@ -115,44 +135,44 @@ def printParentsRoom(world, userInput):
     #Detail text for dresser while checking if the game is in final state or if its not
     if userInput.lower().strip() == "dresser":
         if world["poiFlags"]["Parents Room"]["Final"] != True:
-            print("\nYou slowly open the drawer, trying not to make a sound...")
+            print(f"\n{printYOUColor(world)} slowly open the drawer, trying not to make a sound...")
             time.sleep(2)
             print("Nothing but your mom's clothes. It smells of perfume\n")
             return world
         else:
-            print("\nYou slowly open the drawer, trying not to make a sound...")
+            print(f"\n{printYOUColor(world)} slowly open the drawer, trying not to make a sound...")
             time.sleep(2)
             print("Nothing but your mom's clothes. It smells of perfume...")
             time.sleep(2)
-            print("You rustle through the clothes, ignoring the overpowering smell.")
+            print(f"{printYOUColor(world)} rustle through the clothes, ignoring the overpowering smell.")
             time.sleep(3)
-            print("You find a folded up piece of paper.")
+            print(f"{printYOUColor(world)} find a folded up piece of paper.")
             time.sleep(2)
-            print("You unfold it and start reading...")
+            print(f"{printYOUColor(world)} unfold it and start reading...")
             time.sleep(3)
             print("It prints: '1st: RIGHT'\n")
             time.sleep(1)
-            print("You wonder what it means.\n")
+            print(f"{printYOUColor(world)} wonder what it means.\n")
             return world
         #text for nightstand, checks if have key or not
     if userInput.lower().strip() == "nightstand":
         if "key" in world["player"]["inv"] or world["poiFlags"]["Parents Room"]["Final"] == True:
-            print("\nYou open the drawer as quietly as possible, your dad's snores growing louder...")
+            print(f"\n{printYOUColor(world)} open the drawer as quietly as possible, your dad's snores growing louder...")
             time.sleep(3)
             print("Nothing but a pack of gum and iPhone charger now.\n")
         else:
-            print("\n You open the drawer as quietly as possible, your dad's snores growing louder...")
+            print(f"\n {printYOUColor(world)} open the drawer as quietly as possible, your dad's snores growing louder...")
             time.sleep(3)
             print("Rustling around finding various objects like a pack of gum, you spot something...")
             time.sleep(3)
-            print("You pick up a shiny key... It may be useful.\n")
+            print(f"{printYOUColor(world)} pick up a shiny {KEY}... It may be useful.\n")
             time.sleep(2)
             world["player"]["inv"].append("key")
             world["stats"]["Items Collected"].append("key")
             return world
         #text for closet
     if userInput.lower().strip() == "closet":
-        print("\nYou open the closet door slowly, the door is creaky...")
+        print(f"\n{printYOUColor(world)} open the closet door slowly, the door is creaky...")
         time.sleep(2)
         print("Nothing useful in here.\n")
         return world
@@ -170,7 +190,7 @@ def printYourRoom(world, userInput):
     import random
     #Text for leaving
     if userInput.lower().strip() == "leave":
-        print("\nYou leave your room. Let's get out of here.\n")
+        print(f"\n{printYOUColor(world)} leave your room. Let's get out of here.\n")
         time.sleep(2)
         world["playerLoc"]["x"] = 3
         world["playerLoc"]["y"] = 5
@@ -180,27 +200,27 @@ def printYourRoom(world, userInput):
     if userInput.lower().strip() == "sleep":
         randchoice = random.randint(0,1)
         if randchoice == 0:
-            print("\nYou lay in the bed and fall asleep...")
+            print(f"\n{printYOUColor(world)} lay in the bed and fall asleep...")
             time.sleep(2)
-            print("You have a great dream but after a short while waken up by a loud BANG outside your room.")
+            print(f"{printYOUColor(world)} have a great dream but after a short while waken up by a loud BANG outside your room.")
             time.sleep(3)
-            print("You need to get out of here.\n")
+            print(f"{printYOUColor(world)} need to get out of here.\n")
             time.sleep(3)
             return world
         else:
-            print("\nYou lay in the bed and fall asleep...")
+            print(f"\n{printYOUColor(world)} lay in the bed and fall asleep...")
             time.sleep(2)
             print("It only takes you 10 minutes to get waken up by a terrible nightmare.")
             time.sleep(3)
-            print("You need to get out of here.\n")
+            print(f"{printYOUColor(world)} need to get out of here.\n")
             time.sleep(2)
             return world
     #Closet text dependent on if have slippers or not
     if userInput.lower().strip() == "closet":
         if "slippers" not in world["player"]["inv"]:
-            print("\nYou open the closet doors and see multiple jackets you always wear.")
+            print(f"\n{printYOUColor(world)} open the closet doors and see multiple jackets {printYOUColor(world)} always wear.")
             time.sleep(3)
-            print("Your gaze shifts downward as you lay your eyes on your blue pair of slippers...")
+            print(f"Your gaze shifts downward as {printYOUColor(world)} lay your eyes on your blue pair of {SLIPPERS}...")
             time.sleep(3)
             print("Perfect.\n")
             time.sleep(3)
@@ -208,30 +228,30 @@ def printYourRoom(world, userInput):
             world["stats"]["Items Collected"].append("slippers")
             return world
         else:
-            print("\nYou open the closet doors and see multiple jackets you always wear.")
+            print(f"\n{printYOUColor(world)} open the closet doors and see multiple jackets {printYOUColor(world)} always wear.")
             time.sleep(3)
-            print("You look for anything else that could be useful...")
+            print(f"{printYOUColor(world)} look for anything else that could be useful...")
             time.sleep(2)
             print("Nothing looks of use.\n")
             time.sleep(3)
     #look around text dependent on if in final phase or not
     if userInput.lower().strip() == "lookaround":
         if world["poiFlags"]["Your Room"]["Final"] == True:
-            print("\nYou look around your room examining harder than ever.")
+            print(f"\n{printYOUColor(world)} look around your room examining harder than ever.")
             time.sleep(3)
-            print("You spot tiny holes in the roof, even a cobweb in one of the corners")
+            print(f"{printYOUColor(world)} spot tiny holes in the roof, even a cobweb in one of the corners")
             time.sleep(3)
-            print("You turn your gaze towards the door and squint...")
+            print(f"{printYOUColor(world)} turn your gaze towards the door and squint...")
             time.sleep(2)
-            print("You see a folded piece of paper and grab it...")
+            print(f"{printYOUColor(world)} see a folded piece of paper and grab it...")
             time.sleep(2)
-            print("You unfold the piece of paper and it prints: '2nd: RIGHT'\n")
+            print(f"{printYOUColor(world)} unfold the piece of paper and it prints: '2nd: RIGHT'\n")
             time.sleep(4)
             return world
         else:
-            print("You take a second to glance around the room")
+            print(f"{printYOUColor(world)} take a second to glance around the room")
             time.sleep(2)
-            print("For the most part it is baron, but you notice some  small details")
+            print("For the most part it is baron, but you notice some small details")
             time.sleep(2)
             print("A tiny rip in your jeans on the floor, even a cobweb in the corner of the room.")
             time.sleep(2)
@@ -250,7 +270,7 @@ def printKitchen(world, userInput):
     import time
     #Leave text and functionality
     if userInput.lower().strip() == "leave":
-        print("\nYou walk out of the kitchen.\n")
+        print(f"\n{printYOUColor(world)} walk out of the kitchen.\n")
         time.sleep(2)
         world["playerLoc"]["x"] = 1
         world["playerLoc"]["y"] = 3
@@ -259,16 +279,16 @@ def printKitchen(world, userInput):
     #stove text and functionality
     if userInput.lower().strip() == "stove":
         if "steak" in world["player"]["inv"]:
-            print("\nYou walk towards the old stove with a steak.")
+            print(f"\n{printYOUColor(world)} walk towards the old stove with a {STEAK}.")
             time.sleep(3)
-            print("You already have one, dont need another.")
+            print(f"{printYOUColor(world)} already have one, dont need another.")
             time.sleep(2)
             return world
         else:
             if world["Stove"] > 5:
-                print("\nYou walk towards the old stove with a steak.")
+                print(f"\n{printYOUColor(world)} walk towards the old stove with a {STEAK}.")
                 time.sleep(3)
-                print("You begin to cook the steak.")
+                print(f"{printYOUColor(world)} begin to cook the {STEAK}.")
                 time.sleep(3)
                 print("Looks edible.\n")
                 time.sleep(2)
@@ -277,21 +297,21 @@ def printKitchen(world, userInput):
                 world["Stove"] -=1
                 return world
             if world["Stove"] == 1:
-                print("\nYou walk towards the old stove with a steak.")
+                print(f"\n{printYOUColor(world)} walk towards the old stove with a {STEAK}.")
                 time.sleep(3)
-                print("You begin to cook the steak.")
+                print(f"{printYOUColor(world)} begin to cook the {STEAK}.")
                 time.sleep(3)
                 print("Looks edible.\n")
-                print("The stove looks disasterous. It will break down after cooking one more steak.\n")
+                print(f"The stove looks disasterous. It will break down after cooking one more {STEAK}.\n")
                 time.sleep(4)
                 world["player"]["inv"].append("steak")
                 world["stats"]["Items Collected"].append("steak")
                 world["Stove"] -=1
                 return world
             if world["Stove"] <= 3:
-                print("\nYou walk towards the old stove with a steak.")
+                print(f"\n{printYOUColor(world)} walk towards the old stove with a {STEAK}.")
                 time.sleep(3)
-                print("You begin to cook the steak.")
+                print(f"{printYOUColor(world)} begin to cook the {STEAK}.")
                 time.sleep(3)
                 print("Looks edible.\n")
                 print("The stove looks really bad. It will break down soon.\n")
@@ -301,9 +321,9 @@ def printKitchen(world, userInput):
                 world["Stove"] -=1
                 return world
             if world["Stove"] <= 5:
-                print("\nYou walk towards the old stove with a steak.")
+                print(f"\n{printYOUColor(world)} walk towards the old stove with a {STEAK}.")
                 time.sleep(3)
-                print("You begin to cook the steak.")
+                print(f"{printYOUColor(world)} begin to cook the {STEAK}.")
                 time.sleep(3)
                 print("Looks edible.\n")
                 print("The stove looks worse for wear.\n")
@@ -320,19 +340,19 @@ def printKitchen(world, userInput):
             return world
         world["player"]["hunger"] += 5
         if world["player"]["hunger"] >= world["player"]["maxHung"]:
-            print("\nYou ate the steak...")
+            print(f"\n{printYOUColor(world)} ate the steak...")
             time.sleep(2)
             print("Very juicy, but kind of hard to get down...")
             time.sleep(3)
-            print("You are now full!\n")
+            print(f"{printYOUColor(world)} are now full!\n")
             time.sleep(2)
             world["player"]["hunger"] = world["player"]["maxHung"]
             world["player"]["inv"].remove("steak")
             return world
         if world["player"]["hunger"] < world["player"]["maxHung"]:
-            print("\nYou ate the steak...")
+            print(f"\n{printYOUColor(world)} ate the {STEAK}...")
             time.sleep(2)
-            print("You were so hungry, you wolfed down the steak, loving every bit of the taste...")
+            print(f"{printYOUColor(world)} were so hungry, you wolfed down the {STEAK}, loving every bit of the taste...")
             time.sleep(3)
             print("Very Good!\n")
             time.sleep(2)
@@ -341,35 +361,35 @@ def printKitchen(world, userInput):
     #Text for fridge and checks if in final state or not.
     if userInput.lower().strip() == "fridge":
         if world["poiFlags"]["Kitchen"]["Final"] == True:
-            print("\nYou open the fridge as it cool air blasts in your face...")
+            print(f"\n{printYOUColor(world)} open the fridge as it cool air blasts in your face...")
             time.sleep(3)
             print("Those pickles look delicious.")
             time.sleep(1)
-            print("You impulsively grab from them but when you do you feel something on the backside...")
+            print(f"{printYOUColor(world)} impulsively grab from them but when {printYOUColor(world)} do you feel something on the backside...")
             time.sleep(3)
-            print("Turning them around, you find a folded piece of paper attached to the pickles!\n")
+            print(f"Turning them around, {printYOUColor(world)} find a folded piece of paper attached to the pickles!\n")
             time.sleep(2)
             print("Opening the piece of paper it prints: '3rd: LEFT'\n")
             time.sleep(4)
             return world
         else:
-            print("\nYou open the fridge as it cool air blasts in your face...")
+            print(f"\n{printYOUColor(world)} open the fridge as it cool air blasts in your face...")
             time.sleep(3)
-            print("Looking around everything looks delicious to you.")
+            print(f"Looking around everything looks delicious to {printYOUColor(world)}.")
             time.sleep(2)
-            print("You look longily at the pickles, the steak and the pizza rolls.")
+            print(f"{printYOUColor(world)} look longily at the pickles, the {STEAK} and the pizza rolls.")
             time.sleep(3)
             if world["player"]["hunger"] == world["player"]["maxHung"]:
                 print("MMM.....\n")
                 time.sleep(2)
                 return world
             else:
-                print("You feel hungry...\n")
+                print(f"{printYOUColor(world)} feel hungry...\n")
                 time.sleep(2)
                 return world
     #Text for cabinet and checks if hungry or not
     if userInput.lower().strip() == "cabinet":
-        print("\nYou open the wooden cabinet and look around...")
+        print(f"\n{printYOUColor(world)} open the wooden cabinet and look around...")
         time.sleep(3)
         print("The chips, popcorn and granola bars look delicious...")
         time.sleep(2)
@@ -378,7 +398,7 @@ def printKitchen(world, userInput):
             time.sleep(2)
             return world
         else:
-            print("You feel hungry...\n")
+            print(f"{printYOUColor(world)} feel hungry...\n")
             time.sleep(2)
             return world
         
@@ -391,12 +411,15 @@ A world - see where everything is and where the player is at in the game, userIn
 '''
 
 def printPostgame(world, userInput):
+    #Checks for userInput
     import time
     if userInput.lower().strip() == "quit":
+        #Ends game if quit is chosen
         print("\nThank you for playing!\n")
         time.sleep(3)
         exit()
     if userInput.lower().strip() == "stats":
+        #Processes stats if stats is chosen 
         stats = readStats(world)
         print(stats)
         time.sleep(3)

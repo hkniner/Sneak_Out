@@ -7,7 +7,9 @@ It takes one parameter:
 boardSize: representing the size of the board created
 '''
 def createBoard(boardSize):
+    #Creates board
     board = []
+    #Fills list wth different lists and 0 in all boxes
     for row in range(boardSize):
         board.append([])
         for col in range(boardSize):
@@ -23,9 +25,12 @@ world: dictionary that contains the board list
 def printBoard(world):
     outputString = "" #Empty String
     board = world["board"]
+    #Creating and printing UI
     dashct = 21 - ((len(world["player"]["name"]) - 11) + 5)
     dashstr = dashct * "-"
     print(f"---------{world["player"]["name"]}'s HOUSE" + f"{dashstr}")
+
+#Visualizing board with blank spots or POIs then filling into outputString
     for row in range(len(board)):
 
         for col in range(len(board)):

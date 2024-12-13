@@ -171,6 +171,7 @@ def getUserName():
         userInput = input("Enter a name for your character?\n: ")
         userInput = userInput.upper().strip()
         print(f"Nice to meet you, {userInput}.")
+        #Makes it so cant use blank name and sets parameters for character count
         if userInput in space:
             print("Cannot just use a blank name.")
             continue
@@ -191,8 +192,10 @@ world - to see inventory items
 
 def printInventory(world):
     import time
+    #Makes output string
     outputString = "[Inventory] : "
     for i in world["player"]["inv"]:
+        #If item in inventory changes it into colored and adds it to output string
         if i == "slippers":
             col_op = " \033[34mSlippers\033[0m ,"
             outputString += col_op
@@ -213,7 +216,10 @@ world - to see items collected
 '''
 
 def getStatInventory(world):
+    count = 0
+    #Makes output string
     outputString = ""
+    #If item in inventory changes it into colored and adds it to output string except steak
     for i in world["stats"]["Items Collected"]:
         if i == "slippers":
             col_op = " \033[34mSlippers\033[0m ,"
@@ -222,8 +228,10 @@ def getStatInventory(world):
             col_op = " \033[33mKey\033[0m ,"
             outputString += col_op
         if i == "steak":
-            col_op = " \033[31mSteak\033[0m ,"
-            outputString += col_op
+            count += 1 
+    #Adds colored steak to inventory at end with count of how many obtained
+    col_op = f"\033[31mSteak\033[0m x {count}"
+    outputString += col_op
     return outputString
 
 '''
@@ -246,7 +254,9 @@ def getTxtInventory(world):
             outputString += col_op
         if i == "steak":
             count += 1
-        col_op = f" Steak x {count}"
+    #Adds steak to inventory at end with count of how many obtained
+    col_op = f" Steak x {count}"
+    outputString += col_op
     return outputString
     
     

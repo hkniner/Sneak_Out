@@ -8,7 +8,10 @@ color - string that needs to be in valid_Colors, string - any piece of text that
 '''
 
 def setColor(color, string):
+    #List of valid colors
     valid_Colors = ["red", "green", "yellow", "blue", "purple", "none"]
+
+    #Assigns color dependent on color chosen
 
     try:
         if color.lower().strip() in valid_Colors:
@@ -33,14 +36,18 @@ def setColor(color, string):
                 color = RESET
             if color.lower().strip() == "PURPLE".lower().strip():
                 color = PURPLE
+            
+            #uses color to make string different color
 
             clrString = color + string + RESET
 
             return clrString
         else:
+            #Error message for incorrect color
             print("Invalid Color.")
             return string
     except:
+        #Error message
         print("An Unexpected Error Occured.")
         return string
 
@@ -102,7 +109,7 @@ def dndDiceRoll(dstr):
     except:
         print("An unexpected error occured.")
         return rolls
-
+    #Randomizes rolls and append into empty rolls list
     for i in range(x):
         randNum = random.randint(1, y)
         rolls.append(randNum)
@@ -116,8 +123,9 @@ It has no parameters.
 '''
 
 def createPlayer():
-    player = {
-    }
+    #Creating player as empty dictionary
+    player = {}
+    #Creating attributes of player
     player["name"] = getUserName()
     player["txtName"] = player["name"]
     player["color"] = getColor()

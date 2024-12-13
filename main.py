@@ -14,7 +14,7 @@ import time
 
 
 def main():
-    # Creating csv.data file
+    # Creating csv.data file, if already created, continues
     try:
         f = open("data.csv", "r")
         f.close()
@@ -35,7 +35,7 @@ def main():
     world["inMap"] = True
     world["maxStove"] = sum(dndDiceRoll("6d2"))
     world["Stove"] = world["maxStove"]
-    world["GameWon"] = True
+    world["GameWon"] = False
     world["GameOver"] = False
     world["PostGame"] = False
 
@@ -72,7 +72,7 @@ def main():
     world["poiFlags"] = {}
     world["poiFlags"]["Front Door"] = {
         "Unlock": False,
-        "Finish": True,
+        "Finish": False,
         "InKeyGame": False
     }
     world["poiFlags"]["Parents Room"] = {
@@ -88,13 +88,13 @@ def main():
     #Intro Cutscene
 
     print(f"As the night's got warmer and the day's became longer {world["player"]["name"]} was lying in their bed...")
-    #time.sleep(4)
+    time.sleep(4)
     print("With a growing urge that could not be ignored any longer...")
-    #time.sleep(4)
+    time.sleep(4)
     print("The urge to...")
-    #time.sleep(2)
+    time.sleep(2)
     print("SNEAK OUT!!!!")
-    #time.sleep(2)
+    time.sleep(2)
 
 
     #Gameplay loop
@@ -118,26 +118,35 @@ def main():
         if world["inMap"] == False:
             #Checks which POI player located at and prints dependent on that POI
             if world["playerLoc"] == world["POI"]["Front Door"]:
+                POI = setColor("purple", "FRONT DOOR")
+                print(f"------{POI}-----------")
                 userInput = getUserComm(world)
                 printFrontDoor(world, userInput)
             if world["playerLoc"] == world["POI"]["Parents Room"]:
+                POI = setColor("purple", "PARENTS ROOM")
+                print(f"------{POI}-----------")
                 userInput = getUserComm(world)
                 printParentsRoom(world, userInput)
             if world["playerLoc"] == world["POI"]["Your Room"]:
+                POI = setColor("purple", "YOUR ROOM")
+                print(f"------{POI}-----------")
                 userInput = getUserComm(world)
                 printYourRoom(world, userInput)
             if world["playerLoc"] == world["POI"]["Kitchen"]:
+                POI = setColor("purple", "KITCHEN")
+                print(f"------{POI}-----------")
                 userInput = getUserComm(world)
                 printKitchen(world, userInput)
-    #Finishing up statistics then processing
+    #Finishing up statistics then processing by rounding the end time and start time finalizing time played
     world["stats"]["end time"] = time.time()
     world["stats"]["Time Played"] = world["stats"]["end time"] - world["stats"]["start time"]
-    txtStatString = processTxtStats(world)
+    world["stats"]["Time Played"] = round(world["stats"]["Time Played"], 2)
 
-        
+    #Postgame loop, writes statistics if game is finished, if dead, plays cutscence
     if world["GameOver"] == True:
         print(f"\n{world["player"]["name"]} fell to the ground as his conciousness left...\n")
         print(f"\nGAME OVER!!!\n")
+        time.sleep(3)
     else:
         world["PostGame"] = True
         writeStats(world)

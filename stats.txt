@@ -1,144 +1,45 @@
- 
----------HENRY-----------
-Character created on: 2024-12-09 10:43:52.322170
-Name: HENRY
-Time played: 12.020405054092407
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------TEST------------
-Character created on: 2024-12-09 10:48:01.136929
-Name: TEST
-Time played: 12.019788026809692
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
+#Three test profiles to test statistics and if the end game works
 ---------TEST1-----------
-Character created on: 2024-12-09 10:49:10.355497
+Character created on: 2024-12-10 13:30:37.807184
 Name: TEST1
-Time played: 12.019568920135498
+Time played: 12.02
+# of Cycles: 1
+Hunger used: 0
+Items Collected: 
+-------------------------
+ 
+---------TEST2-----------
+Character created on: 2024-12-10 13:31:12.225876
+Name: TEST2
+Time played: 12.02
 # of Cycles: 1
 Hunger used: 0
 Items Collected: 
 -------------------------
  
 ---------TEST3-----------
-Character created on: 2024-12-09 10:53:21.105176
+Character created on: 2024-12-10 13:31:53.732992
 Name: TEST3
-Time played: 12.018447160720825
+Time played: 12.02
 # of Cycles: 1
 Hunger used: 0
 Items Collected: 
 -------------------------
- 
----------TESTPLEAE-------
-Character created on: 2024-12-09 11:06:42.057946
-Name: TESTPLEAE
-Time played: 12.020188093185425
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
+#Two Real profiles that would have a real game on them
+---------PLAYER1---------
+Character created on: 2024-12-10 13:32:34.925517
+Name: PLAYER1
+Time played: 156.62
+# of Cycles: 28
+Hunger used: 18
+Items Collected:  Slippers , Key , Steak x 3
 -------------------------
- 
----------TESTPLZZZ-------
-Character created on: 2024-12-09 11:08:08.917418
-Name: TESTPLZZZ
-Time played: 12.016231060028076
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------TESTPLZ---------
-Character created on: 2024-12-09 11:10:28.538039
-Name: TESTPLZ
-Time played: 12.015944242477417
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------HENRY-----------
-Character created on: 2024-12-09 11:11:47.321953
-Name: HENRY
-Time played: 12.017448902130127
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------RED-------------
-Character created on: 2024-12-09 11:51:39.968964
-Name: RED
-Time played: 0.00011277198791503906
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------HENR------------
-Character created on: 2024-12-09 11:53:19.209845
-Name: HENR
-Time played: 6.580352783203125e-05
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------RED-------------
-Character created on: 2024-12-09 11:53:58.420387
-Name: RED
-Time played: 7.510185241699219e-05
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------RED-------------
-Character created on: 2024-12-09 11:54:55.185669
-Name: RED
-Time played: 6.4849853515625e-05
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------HEN-------------
-Character created on: 2024-12-09 11:58:07.989519
-Name: HEN
-Time played: 7.486343383789062e-05
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------HENRY-----------
-Character created on: 2024-12-09 11:59:56.912228
-Name: HENRY
-Time played: 9.083747863769531e-05
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------RED-------------
-Character created on: 2024-12-09 12:00:39.340093
-Name: RED
-Time played: 7.891654968261719e-05
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
--------------------------
- 
----------TEST------------
-Character created on: 2024-12-09 12:03:33.765084
-Name: TEST
-Time played: 8.082389831542969e-05
-# of Cycles: 1
-Hunger used: 0
-Items Collected: 
+
+---------PLAYER2---------
+Character created on: 2024-12-10 13:36:24.340239
+Name: PLAYER2
+Time played: 327.83
+# of Cycles: 69
+Hunger used: 48
+Items Collected:  Slippers , Key , Steak x 7
 -------------------------
